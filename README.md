@@ -77,6 +77,28 @@ PINECONE_INDEX_NAME=rag-documents
 
 ---
 
+## 🐳 Docker Support
+
+Run the application with a single command:
+
+```bash
+# Build and start
+make up
+
+# View logs
+make logs
+
+# Stop
+make down
+```
+
+Or using standard Docker Compose:
+```bash
+docker-compose up --build -d
+```
+
+---
+
 ## 🏃‍♂️ Usage
 
 Start the development server:
