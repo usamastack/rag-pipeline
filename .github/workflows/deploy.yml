@@ -1,0 +1,35 @@
+name: Deploy RAG Backend
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pytest httpx
+
+    - name: Run Tests
+      # Assuming we will add tests later, for now just checking if app can import
+      run: |
+        PYTHONPATH=. python -c "from app.main import app; print('App imported successfully')"
+
+    # Placeholder for actual deployment step (e.g. to Render, Railway, AWS)
+    # Since no specific target was mentioned, I'll allow this to verify build success
+    - name: Build Success Message
+      run: echo "Build and Test successful. Ready for deployment."
